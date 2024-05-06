@@ -44,7 +44,8 @@ def main(args):
 
     # model, tokenizer = load_model('./output_dir/model/best_model')
     model, tokenizer = load_model(args.modelpath)
-    dataset = load_from_disk('./data/tokenized_dataset')
+    # dataset = load_from_disk('./data/tokenized_dataset')
+    dataset = load_from_disk(args.dataset)
     results = perform_inference(model, tokenizer, dataset['test'])
     
     save_results(results, args.outputdir)
@@ -54,7 +55,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Perform inference with a trained model on a dataset.')
     parser.add_argument('--modelpath', type=str, required=True, help='Path to the trained model directory.')
-    # parser.add_argument('--datasetlocation', type=str, required=True, help='Path to the processed dataset directory.')
+    parser.add_argument('--datasetlocation', type=str, required=True, help='Path to the processed dataset directory.')
     parser.add_argument('--outputdir', type=str, required=True, help='Directory to save the inference outputs.')
     args = parser.parse_args()
 
