@@ -101,7 +101,10 @@ The model deals  with text data.
 ### Dataset Truncation
 The dataset was sourced from Hugging Face and originally comprised 54 Personal Identifiable Information (PII) classes with approximately 59,000 sample texts. To expedite experimentation and reduce computational requirements, the dataset was truncated to include only 10,000 sample texts. 
 
-### Output Format
+### Output Format 
+
+#### For inference.py
+
 The final output of the process is a CSV file containing cleaned and structured data extracted from textual sources. Below is a detailed explanation of the columns present in the output CSV file:
 
 Sample: An index or identifier for each entry in the dataset.
@@ -109,6 +112,13 @@ Sample: An index or identifier for each entry in the dataset.
 Source Text: The original text from which information has been extracted.
 
 Values: A semicolon-separated list of key-value pairs where each key represents a type of information identified in the text, and the value is the corresponding extracted data.
+
+#### For custom_inference.py
+
+Sample: Custom piece of text
+
+Predicted Labels: A semicolon separated key value pair with confidence score
+
 
 
 
