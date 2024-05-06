@@ -51,11 +51,13 @@ Before running inference.py file make sure you run the data_prep.py file if you 
 5.  **Running Inference**:
 
     ```bash
-    python inference.py --outputdir ./path_to_output_directory
+    python inference.py --modelpath /path to best model --outputdir ./path_to_output_directory
     ```
-
-
-
+    
+    ```bash
+    modelpath = ./ouput_dir/model/best_model  . Use this path if you are using model from google drive link 
+    ```
+    
 After you run the inference.py file, it will save an inference_results.csv in the output directory you specified. 
 
 For simplicity, let's assume that if you specify the output directory as ./output, then the file will be saved at the location ./output/inference_results.csv.
@@ -76,11 +78,18 @@ post_processing.py --input_file ./output/inference_results.csv --outputdir ./out
 
 7. **Custom Text Inference**
 
-To run the inference script on a custom piece of text, use the following command structure. Replace /path/to/output_directory with the actual directory path where you want the inference results to be saved, and replace Your input text here with the text you want to analyze:
+
 
     ```bash
-    python custom_inference.py --outputdir /path/to/output_directory --text "Your input text here"
+    python custom_inference.py --modelpath /path to best model --outputdir /path to output_directory --text "Your input text here"
     ```
+
+    ```bash
+    modelpath = ./ouput_dir/model/best_model  . Use this path if you are using model from google drive link 
+    ```
+   
+   To run the inference script on a custom piece of text, use the following command structure. Replace /path/to/output_directory with the actual directory path where you want the inference results to be saved, 
+    and replace Your input text here with the text you want to analyze.
 
 ### Assumptions
 The model deals  with text data.
