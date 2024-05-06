@@ -27,8 +27,6 @@ To set up the project environment, follow these steps:
 
 **Data Preparation**:
 
-
-
     ```bash
     python data_prep.py
     ```
@@ -41,11 +39,13 @@ To set up the project environment, follow these steps:
 
 
  **Evaluating the Model**:
+
     ```bash
     python metric.py
     ```
 
  **Running Inference**:
+ 
     ```bash
     python inference.py --outputdir ./path_to_output_directory
     ```
