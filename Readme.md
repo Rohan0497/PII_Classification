@@ -73,6 +73,15 @@ post_processing.py --input_file ./output/inference_results.csv --outputdir ./out
     ```
 
 
+
+7. **Custom Text Inference**
+
+To run the inference script on a custom piece of text, use the following command structure. Replace /path/to/output_directory with the actual directory path where you want the inference results to be saved, and replace Your input text here with the text you want to analyze:
+
+    ```bash
+    python custom_inference.py --outputdir /path/to/output_directory --text "Your input text here"
+    ```
+
 ### Assumptions
 The model deals  with text data.
 
