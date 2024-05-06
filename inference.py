@@ -45,7 +45,7 @@ def main(args):
     # model, tokenizer = load_model('./output_dir/model/best_model')
     model, tokenizer = load_model(args.modelpath)
     # dataset = load_from_disk('./data/tokenized_dataset')
-    dataset = load_from_disk(args.dataset)
+    dataset = load_from_disk(args.datasetlocation)
     results = perform_inference(model, tokenizer, dataset['test'])
     
     save_results(results, args.outputdir)
