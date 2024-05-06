@@ -4,21 +4,13 @@ import os
 import csv
 
 def setup_pipeline(model_path):
-    # Set up the pipeline for token classification using the specified model
     return pipeline('token-classification', model=model_path, tokenizer=model_path)
 
-# def perform_inference(pipeline, text):
-#     # Use the pipeline to perform inference on input text or list of texts
-#     if isinstance(text, list):
-#         return [pipeline(t) for t in text]
-#     else:
-#         return pipeline(text)
 
 
 def perform_inference(pipeline, text):
-    # Use the pipeline to perform inference on input text or list of texts
     result = pipeline(text)
-    print(result)  # Add this line to inspect the output structure
+    # print(result)  
     return result
 
 def save_results(results, output_dir, input_data):
@@ -27,12 +19,47 @@ def save_results(results, output_dir, input_data):
         writer = csv.writer(file)
         writer.writerow(['Sample', 'Source Text', 'Predicted Labels'])
         for i, (data, result) in enumerate(zip(input_data, results)):
-            # Filter results to include only high-confidence predictions
-            filtered_result = [ent for ent in result if ent['score'] > 0.5]
-            # Format the results for output
-            formatted_result = '; '.join([f"{ent['entity']}: {ent['word']} (Score: {ent['score']:.2f})" for ent in filtered_result])
-            writer.writerow([i, data, formatted_result])
+            # Organize results by entity type, merging tokens appropriately
+            organized_results = {}
+            for ent in result:
+                entity_type = ent['entity'][2:]  # Strip the B- or I-
+                word = ent['word'].replace('##', '')
+                score = ent['score']
+                if score <= 0.5:
+                    continue
+
+                # Append word based on entity type characteristics
+                if entity_type in ['EMAIL', 'FIRSTNAME', 'LASTNAME', 'USERNAME']:
+                    # Append without space if it's part of a continuous entity like email or names
+                    if entity_type in organized_results:
+                        last_char = organized_results[entity_type]['word'][-1]
+                        if last_char.isalnum() and word[0].isalnum():
+                            organized_results[entity_type]['word'] += word
+                        else:
+                            organized_results[entity_type]['word'] += '' + word
+                    else:
+                        organized_results[entity_type] = {'word': word, 'scores': [score]}
+                else:
+                    # Normal entities with spaces
+                    if entity_type in organized_results:
+                        organized_results[entity_type]['word'] += ' ' + word
+                    else:
+                        organized_results[entity_type] = {'word': word, 'scores': [score]}
+
+                if entity_type not in organized_results:
+                    organized_results[entity_type] = {'word': word, 'scores': [score]}
+                else:
+                    organized_results[entity_type]['scores'].append(score)
+
+            # Format the results for output by averaging scores
+            formatted_result = []
+            for entity, details in organized_results.items():
+                average_score = sum(details['scores']) / len(details['scores'])
+                formatted_result.append(f"{entity}: {details['word']} (Score: {average_score:.2f})")
+
+            writer.writerow([i, data, '; '.join(formatted_result)])
     print(f"Results saved to {output_file}")
+
 
 
 def main(args):
@@ -40,12 +67,11 @@ def main(args):
 
     nlp_pipeline = setup_pipeline('./output_dir/model/best_model')
 
-    if args.text:
-        # Direct text input from the user
+    if args.text:        
         results = perform_inference(nlp_pipeline, args.text)
         save_results([results], args.outputdir, [args.text])
     elif args.dataset:
-        # Load data from a provided file path (assuming one text per line)
+     
         with open(args.dataset, 'r') as file:
             lines = [line.strip() for line in file if line.strip()]
         results = perform_inference(nlp_pipeline, lines)
