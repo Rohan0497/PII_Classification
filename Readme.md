@@ -6,6 +6,11 @@ This repository contains scripts designed to train, evaluate, and infer a machin
 
 
 0. **Quick Demo**:
+ Install pipeline library using pip install pipeline
+
+Enter customised text in the input_text_here field
+
+The bestmodel can be obtained from google drive link
 
     ```bash
     from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification
