@@ -56,7 +56,7 @@ Before running inference.py file make sure you run the data_prep.py file if you 
     
     ```bash
     #Use this modelpath if you are using model from google drive link 
-    modelpath = ./ouput_dir/model/best_model
+    modelpath = ./output_dir/model/best_model
 
     #Google drive has the data stored at below location
     dataset = ./data/tokenized_dataset
