@@ -91,6 +91,8 @@ post_processing.py --input_file ./output/inference_results.csv --outputdir ./out
    To run the inference script on a custom piece of text, use the following command structure. Replace /path/to/output_directory with the actual directory path where you want the inference results to be saved, 
     and replace Your input text here with the text you want to analyze.
 
+   This script will create a folder named result and store the output inside it with the name inference_results.csv
+
 ### Assumptions
 The model deals  with text data.
 
