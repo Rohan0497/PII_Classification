@@ -86,3 +86,9 @@ Source Text: The original text from which information has been extracted.
 
 Values: A semicolon-separated list of key-value pairs where each key represents a type of information identified in the text, and the value is the corresponding extracted data.
 
+
+### Evaluation Metrics 
+The classification_report in the output folder contains all the necessary information precision,recall 
+
+
+
