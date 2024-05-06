@@ -81,6 +81,8 @@ The dataset was sourced from Hugging Face and originally comprised 54 Personal I
 The final output of the process is a CSV file containing cleaned and structured data extracted from textual sources. Below is a detailed explanation of the columns present in the output CSV file:
 
 Sample: An index or identifier for each entry in the dataset.
+
 Source Text: The original text from which information has been extracted.
+
 Values: A semicolon-separated list of key-value pairs where each key represents a type of information identified in the text, and the value is the corresponding extracted data.
 
