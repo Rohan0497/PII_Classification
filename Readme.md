@@ -46,6 +46,8 @@ To set up the project environment, follow these steps:
     python metric.py
     ```
 
+Before running inference.py file make sure you run the data_prep.py file if you intend to use the best model directly.
+
 5.  **Running Inference**:
 
     ```bash
