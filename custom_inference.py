@@ -64,8 +64,8 @@ def save_results(results, output_dir, input_data):
 
 def main(args):
     os.makedirs(args.outputdir, exist_ok=True)
-
-    nlp_pipeline = setup_pipeline('./output_dir/model/best_model')
+    nlp_pipeline = setup_pipeline(args.modelpath)
+    # nlp_pipeline = setup_pipeline('./output_dir/model/best_model')
 
     if args.text:        
         results = perform_inference(nlp_pipeline, args.text)
@@ -81,6 +81,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Perform inference with a trained model on a provided text or dataset.')
+    parser.add_argument('--modelpath', type=str, required=True, help='Path to the trained model directory.')
     parser.add_argument('--outputdir', type=str, required=True, help='Directory to save the inference outputs.')
     parser.add_argument('--text', type=str, help='Direct text input for inference.')
     parser.add_argument('--dataset', type=str, help='Path to a text file containing data for inference.')
