@@ -51,11 +51,15 @@ Before running inference.py file make sure you run the data_prep.py file if you 
 5.  **Running Inference**:
 
     ```bash
-    python inference.py --modelpath /path to best model --outputdir ./path_to_output_directory
+    python inference.py --modelpath /path-to-best-model --datasetlocation /path-to-dataset  --outputdir ./path_to_output_directory
     ```
     
     ```bash
-    modelpath = ./ouput_dir/model/best_model   #Use this path if you are using model from google drive link 
+    #Use this modelpath if you are using model from google drive link 
+    modelpath = ./ouput_dir/model/best_model
+
+    #Google drive has the data stored at below location
+    dataset = ./data/tokenized_dataset
     ```
     
 After you run the inference.py file, it will save an inference_results.csv in the output directory you specified. 
