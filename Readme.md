@@ -4,13 +4,14 @@
 
 This repository contains scripts designed to train, evaluate, and infer a machine learning model capable of detecting Personally Identifiable Information (PII) in textual data. 
 
-
-0. **Quick Demo**:
- Install pipeline library using pip install pipeline
+For quick demo Install pipeline library using pip install pipeline
 
 Enter customised text in the input_text_here field
 
 The bestmodel can be obtained from google drive link
+
+0. **Quick Demo**:
+
 
     ```bash
     from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification
