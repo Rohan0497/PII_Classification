@@ -4,51 +4,6 @@
 
 This repository contains scripts designed to train, evaluate, and infer a machine learning model capable of detecting Personally Identifiable Information (PII) in textual data. 
 
-For quick demo Install pipeline library using pip install pipeline
-
-Enter customised text in the input_text_here field
-
-The bestmodel can be obtained from google drive link
-
-0. **Quick Demo**:
-
-
-    ```bash
-    from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification
-
-    def load_model(model_path):        
-        tokenizer = AutoTokenizer.from_pretrained(model_path)
-        model = AutoModelForTokenClassification.from_pretrained(model_path)
-        return model, tokenizer
-
-    def setup_pipeline(model, tokenizer):
-        return pipeline('token-classification', model=model, tokenizer=tokenizer)
-
-    def perform_inference(pipeline, text):    
-        return pipeline(text)
-
-    if __name__ == '__main__':
-        model_path = './output_dir/model/best_model'
-        input_text_here = "My name is Clara and I live in Berkeley, California."
-
-        model, tokenizer = load_model(model_path)
-        nlp_pipeline = setup_pipeline(model, tokenizer)
-        results = perform_inference(nlp_pipeline, input_text_here)
-        
-        for result in results:
-            print(f"Entity: {result['entity']} - Score: {result['score']:.4f} - Word: {result['word']}")
-    ```
-
-    ```bash
-
-    Entity: B-FIRSTNAME - Score: 0.7505 - Word: clara
-    Entity: B-COUNTY - Score: 0.4687 - Word: berkeley
-    Entity: B-STATE - Score: 0.5916 - Word: california
-
-    ```
-
-
-
 
 
 ## Installation
