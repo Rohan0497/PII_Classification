@@ -25,27 +25,27 @@ To set up the project environment, follow these steps:
 
 ## Usage
 
-**Data Preparation**:
+2. **Data Preparation**:
 
     ```bash
     python data_prep.py
     ```
 
-**Training**:
+3.  **Training**:
 
     ```bash
     python train.py
     ```
 
 
- **Evaluating the Model**:
+4. **Evaluating the Model**:
 
     ```bash
     python metric.py
     ```
 
- **Running Inference**:
- 
+5.  **Running Inference**:
+
     ```bash
     python inference.py --outputdir ./path_to_output_directory
     ```
@@ -53,12 +53,17 @@ To set up the project environment, follow these steps:
 
 
 After you run the inference.py file, it will save an inference_results.csv in the output directory you specified. 
-For simplicity, let's assume that if you specify the output directory as ./output, then the file will be saved at the location ./output/inference_results.csv. 
-For post-processing of the file, make sure to specify the location of the inference_results.csv file as --input_file_location, and then specify the output location 
-demo implementation would be as follows
+
+For simplicity, let's assume that if you specify the output directory as ./output, then the file will be saved at the location ./output/inference_results.csv.
+
+For post-processing of the file, make sure to specify the location of the inference_results.csv file as --input_file_location, and then specify the output location. 
+
+Demo implementation would be as follows
+
 post_processing.py --input_file ./output/inference_results.csv --outputdir ./output
 
- **Post Processing**:
+6.  **Post Processing**:
+
     ```bash
     python post_processing.py --input_file ./path_to_input_file/inference_results.csv --outputdir ./path_to_output_directory
     ```
