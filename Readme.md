@@ -4,6 +4,47 @@
 
 This repository contains scripts designed to train, evaluate, and infer a machine learning model capable of detecting Personally Identifiable Information (PII) in textual data. 
 
+
+0. **Quick Demo**:
+
+    ```bash
+    from transformers import pipeline, AutoTokenizer, AutoModelForTokenClassification
+
+    def load_model(model_path):        
+        tokenizer = AutoTokenizer.from_pretrained(model_path)
+        model = AutoModelForTokenClassification.from_pretrained(model_path)
+        return model, tokenizer
+
+    def setup_pipeline(model, tokenizer):
+        return pipeline('token-classification', model=model, tokenizer=tokenizer)
+
+    def perform_inference(pipeline, text):    
+        return pipeline(text)
+
+    if __name__ == '__main__':
+        model_path = './output_dir/model/best_model'
+        text_to_classify = "My name is Clara and I live in Berkeley, California."
+
+        model, tokenizer = load_model(model_path)
+        nlp_pipeline = setup_pipeline(model, tokenizer)
+        results = perform_inference(nlp_pipeline, text_to_classify)
+        
+        for result in results:
+            print(f"Entity: {result['entity']} - Score: {result['score']:.4f} - Word: {result['word']}")
+    ```
+
+    ```bash
+
+    Entity: B-FIRSTNAME - Score: 0.7505 - Word: clara
+    Entity: B-COUNTY - Score: 0.4687 - Word: berkeley
+    Entity: B-STATE - Score: 0.5916 - Word: california
+
+    ```
+
+
+
+
+
 ## Installation
 
 To set up the project environment, follow these steps:
@@ -86,9 +127,6 @@ Source Text: The original text from which information has been extracted.
 
 Values: A semicolon-separated list of key-value pairs where each key represents a type of information identified in the text, and the value is the corresponding extracted data.
 
-
-### Evaluation Metrics 
-The classification_report in the output folder contains all the necessary information precision,recall 
 
 
 
