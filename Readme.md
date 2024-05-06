@@ -23,11 +23,11 @@ This repository contains scripts designed to train, evaluate, and infer a machin
 
     if __name__ == '__main__':
         model_path = './output_dir/model/best_model'
-        text_to_classify = "My name is Clara and I live in Berkeley, California."
+        input_text_here = "My name is Clara and I live in Berkeley, California."
 
         model, tokenizer = load_model(model_path)
         nlp_pipeline = setup_pipeline(model, tokenizer)
-        results = perform_inference(nlp_pipeline, text_to_classify)
+        results = perform_inference(nlp_pipeline, input_text_here)
         
         for result in results:
             print(f"Entity: {result['entity']} - Score: {result['score']:.4f} - Word: {result['word']}")
