@@ -55,7 +55,7 @@ Before running inference.py file make sure you run the data_prep.py file if you 
     ```
     
     ```bash
-    modelpath = ./ouput_dir/model/best_model  . Use this path if you are using model from google drive link 
+    modelpath = ./ouput_dir/model/best_model   #Use this path if you are using model from google drive link 
     ```
     
 After you run the inference.py file, it will save an inference_results.csv in the output directory you specified. 
@@ -85,7 +85,7 @@ post_processing.py --input_file ./output/inference_results.csv --outputdir ./out
     ```
 
     ```bash
-    modelpath = ./ouput_dir/model/best_model  . Use this path if you are using model from google drive link 
+    modelpath = ./ouput_dir/model/best_model   #Use this path if you are using model from google drive link 
     ```
    
    To run the inference script on a custom piece of text, use the following command structure. Replace /path/to/output_directory with the actual directory path where you want the inference results to be saved, 
